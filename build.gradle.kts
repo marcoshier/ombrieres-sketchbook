@@ -36,7 +36,7 @@ val orxFeatures = setOf<String>(
 //  "orx-integral-image",
 //  "orx-interval-tree",
 //  "orx-jumpflood",
-//  "orx-kdtree",
+    "orx-kdtree",
 //  "orx-keyframer",
 //  "orx-kinect-v1",
 //  "orx-kotlin-parser",
@@ -52,7 +52,7 @@ val orxFeatures = setOf<String>(
 //  "orx-osc",
 //  "orx-palette",
     "orx-panel",
-//  "orx-parameters",
+    "orx-parameters",
 //  "orx-poisson-fill",
 //  "orx-property-watchers",
 //  "orx-quadtree",
@@ -69,7 +69,7 @@ val orxFeatures = setOf<String>(
 //  "orx-text-writer",
 //  "orx-time-operators",
 //  "orx-timer",
-//  "orx-triangulation",
+    "orx-triangulation",
 //  "orx-turtle",
     "orx-video-profiles",
     "orx-view-box",
@@ -114,12 +114,18 @@ plugins {
 repositories {
     mavenCentral()
     mavenLocal()
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
+    implementation("com.google.code.gson:gson:2.13.1")
+    implementation("com.github.tag-bio:umap-java:master")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.0")
+      implementation("com.squareup.okhttp:okhttp:2.7.5")
+    implementation("org.mobilitydata:gtfs-realtime-bindings:0.0.8")
 
 //    implementation(libs.jsoup)
-//    implementation(libs.csv)
+      implementation(libs.csv)
 
     /* ORSL dependencies */
 

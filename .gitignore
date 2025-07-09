@@ -10,3 +10,7 @@ gui-parameters/
 ffmpegOutput.txt
 ShaderError.glsl
 
+/data/gtfs-nl.zip
+/data/gtfs-static/
+/data/hilversum-static-data/
+/data/gtfs-realtime/
