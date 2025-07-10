@@ -19,6 +19,7 @@ import org.openrndr.extra.olive.oliveProgram
 import org.openrndr.extra.parameters.DoubleParameter
 import org.openrndr.extra.parameters.IntParameter
 import org.openrndr.extra.shapes.rectify.rectified
+import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 import org.openrndr.shape.Circle
 import org.openrndr.shape.ShapeContour
@@ -38,6 +39,8 @@ fun main() {
         }
 
         program {
+            extend(ScreenRecorder())
+
             val gui = WindowedGUI().apply { gui.compartmentsCollapsedByDefault = false }
 
             val params = object {

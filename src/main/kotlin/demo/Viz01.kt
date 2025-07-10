@@ -74,7 +74,7 @@ fun main() {
 
                 val texts = mutableMapOf<String, Vector2>()
 
-                tripsToStopInfos.entries.take(1).forEachIndexed { i, (trip, stopInfos) ->
+                tripsToStopInfos.entries.forEachIndexed { i, (trip, stopInfos) ->
                     val sorted = stopInfos.sortedBy { it.departureTime }
                     val tripStart = sorted.first()
                     val tripEnd = sorted.last()

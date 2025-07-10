@@ -7,10 +7,12 @@ import lib.rbf.rbfGaussian
 import lib.rbf.umapRbf
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
+import org.openrndr.extensions.Screenshots
 import org.openrndr.extra.color.spaces.OKHSV
 import org.openrndr.extra.color.tools.shiftHue
 import org.openrndr.extra.gui.GUI
 import org.openrndr.extra.gui.GUI.ParameterValue
+import org.openrndr.extra.noise.scatter
 import org.openrndr.math.Vector2
 import java.io.File
 import kotlin.text.get
@@ -24,6 +26,8 @@ fun main() {
         }
 
         program {
+
+            extend(Screenshots())
 
             val labels = mutableSetOf<String>()
 
@@ -40,10 +44,6 @@ fun main() {
                 }.toDoubleArray()
             }.toTypedArray()
 
-
-
-            labels
-
             val rbf = data.umapRbf(0.0, drawer.bounds, 15, 100, 0, rbfGaussian(0.001))
 
             var position = drawer.bounds.center
@@ -52,7 +52,10 @@ fun main() {
                 position = it.position
             }
 
+            val thumbnailPoints = drawer.bounds.offsetEdges(-40.0).scatter(20.0)
+
             extend {
+
 
                 drawer.rectangles {
                     for (y in 0 until height step 15) {
