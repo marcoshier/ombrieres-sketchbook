@@ -1,5 +1,6 @@
 package lib.rbf
 
+import lib.Matrix
 import kotlin.math.sqrt
 
 /**

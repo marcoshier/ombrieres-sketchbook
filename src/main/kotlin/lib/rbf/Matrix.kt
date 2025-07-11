@@ -1,4 +1,4 @@
-package lib.rbf
+package lib
 
 import kotlin.math.abs
 
@@ -122,6 +122,16 @@ class Matrix(val rows: Int, val cols: Int) {
     }
 }
 
+operator fun Matrix.times(scale: Double): Matrix {
+    val result = Matrix.zeros(rows, cols)
+    for (i in 0 until rows) {
+        for (j in 0 until cols) {
+            result[i, j] = this[i,j] * scale
+        }
+    }
+    return result
+}
+
 fun Matrix.columnMean(): Matrix {
     val means = DoubleArray(cols)
 
@@ -153,6 +163,26 @@ operator fun Matrix.minus(other: Matrix): Matrix {
         for (j in 0 until rows) {
             for (i in 0 until cols) {
                 result[j, i] = this[j, i] - other[j, i]
+            }
+        }
+    } else {
+        error("Cannot subtract matrices of different dimensions")
+    }
+    return result
+}
+
+operator fun Matrix.plus(other: Matrix): Matrix {
+    val result = Matrix.zeros(rows, cols)
+    if (cols == other.cols && other.rows == 1) {
+        for (j in 0 until rows) {
+            for (i in 0 until cols) {
+                result[j, i] = this[j, i] + other[0, i]
+            }
+        }
+    } else if (cols == other.cols && rows == other.rows) {
+        for (j in 0 until rows) {
+            for (i in 0 until cols) {
+                result[j, i] = this[j, i] + other[j, i]
             }
         }
     } else {

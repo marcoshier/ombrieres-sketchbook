@@ -1,5 +1,8 @@
 package lib.rbf
 
+import lib.Matrix
+import lib.columnMean
+import lib.minus
 import org.openrndr.math.Vector2
 import kotlin.math.exp
 
